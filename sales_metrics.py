@@ -1,13 +1,15 @@
-# sales_metrics.py
-
-def calculate_daily_sales(sales):
+def filter_sales(sales, threshold=100):
     """
-    Calculates the total sales for the day.
+    Filters out sales below a given threshold.
     :param sales: list of numerical sales values
-    :return: total sales sum
+    :param threshold: minimum sale value to keep
+    :return: filtered list of sales
     """
-    return sum(sales)
+    return [sale for sale in sales if sale >= threshold]
 
 if __name__ == "__main__":
-    sample_sales = [100, 200, 150]
-    print("Total Sales:", calculate_daily_sales(sample_sales))
+    sample_sales = [50, 100, 200, 75, 150]
+    filtered = filter_sales(sample_sales, threshold=100)
+    print("Filtered Sales:", filtered)
+    print("Total Filtered Sales:", calculate_daily_sales(filtered))
+
